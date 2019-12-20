@@ -1,5 +1,7 @@
 package com.danwoo.eatgo.interfaces;
 
+import com.danwoo.eatgo.domain.MenuItemRepository;
+import com.danwoo.eatgo.domain.MenuItemRepositoryImpl;
 import com.danwoo.eatgo.domain.RestuarantRespository;
 import com.danwoo.eatgo.domain.RestuarantRespositoryImpl;
 import org.junit.Test;
@@ -25,6 +27,9 @@ public class RestaurantControllerTest {
     @SpyBean(RestuarantRespositoryImpl.class)
     private RestuarantRespository restuarantRespository;
 
+    @SpyBean(MenuItemRepositoryImpl.class)
+    private MenuItemRepository menuItemRepository;
+
     @Test
     public void list() throws Exception {
 
@@ -48,6 +53,9 @@ public class RestaurantControllerTest {
                 ))
                 .andExpect(content().string(
                         containsString("\"name\":\"Bov zip\"")
+                ))
+                .andExpect(content().string(
+                        containsString("Kimchi")
                 ));
         mvc.perform(get("/restaurants/2020"))
                 .andExpect(status().isOk())
