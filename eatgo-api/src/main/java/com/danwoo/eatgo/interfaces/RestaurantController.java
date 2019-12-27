@@ -39,11 +39,6 @@ public class RestaurantController {
         //하나의 가게정보를 바로 얻게? : 기본정보+메뉴정보
         Restuarant restuarant = restuarantService.getRestuarant(id);
 
-//        Restuarant restuarant = restuarantRespository.findById(id);
-//
-//
-//        List<MenuItem> menuItems = menuItemRepository.findAllByRestaurantId(id);
-//        restuarant.setMenuItems(menuItems);
 
         return restuarant;
     }

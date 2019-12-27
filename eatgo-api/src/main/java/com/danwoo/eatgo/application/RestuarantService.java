@@ -1,5 +1,7 @@
 package com.danwoo.eatgo.application;
 
+import com.danwoo.eatgo.domain.MenuItem;
+import com.danwoo.eatgo.domain.MenuItemRepository;
 import com.danwoo.eatgo.domain.Restuarant;
 import com.danwoo.eatgo.domain.RestuarantRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +15,20 @@ public class RestuarantService {
     @Autowired
     RestuarantRespository restuarantRespository;
 
-    public RestuarantService(RestuarantRespository restuarantRespository){
+    @Autowired
+    MenuItemRepository menuItemRepository;
+
+    public RestuarantService(RestuarantRespository restuarantRespository, MenuItemRepository menuItemRepository){
         this.restuarantRespository = restuarantRespository;
+        this.menuItemRepository = menuItemRepository;
     }
 
     public Restuarant getRestuarant(Long id){
 
         Restuarant restuarant = restuarantRespository.findById(id);
+
+        List<MenuItem> menuItems = menuItemRepository.findAllByRestaurantId(id);
+        restuarant.setMenuItems(menuItems);
 
         return restuarant;
     }
