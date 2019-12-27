@@ -1,5 +1,6 @@
 package com.danwoo.eatgo.interfaces;
 
+import com.danwoo.eatgo.application.RestuarantService;
 import com.danwoo.eatgo.domain.MenuItemRepository;
 import com.danwoo.eatgo.domain.MenuItemRepositoryImpl;
 import com.danwoo.eatgo.domain.RestuarantRespository;
@@ -26,6 +27,9 @@ public class RestaurantControllerTest {
 
     @SpyBean(RestuarantRespositoryImpl.class)
     private RestuarantRespository restuarantRespository;
+
+    @SpyBean(RestuarantService.class)
+    private RestuarantService restuarantService;
 
     @SpyBean(MenuItemRepositoryImpl.class)
     private MenuItemRepository menuItemRepository;

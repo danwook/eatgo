@@ -1,5 +1,6 @@
 package com.danwoo.eatgo.interfaces;
 
+import com.danwoo.eatgo.application.RestuarantService;
 import com.danwoo.eatgo.domain.MenuItem;
 import com.danwoo.eatgo.domain.MenuItemRepository;
 import com.danwoo.eatgo.domain.Restuarant;
@@ -14,17 +15,20 @@ import java.util.List;
 @RestController
 public class RestaurantController {
 
-    @Autowired
-    private RestuarantRespository restuarantRespository;
+//    @Autowired
+//    private RestuarantRespository restuarantRespository;
+//
+//    @Autowired
+//    private MenuItemRepository menuItemRepository;
 
     @Autowired
-    private MenuItemRepository menuItemRepository;
+    private RestuarantService restuarantService;
 
 
     @GetMapping("/restaurants")
     public List<Restuarant> list() {
 
-        List<Restuarant> restuarants = restuarantRespository.findAll();
+        List<Restuarant> restuarants = restuarantService.getRestuarants();
 
         return restuarants;
     }
@@ -32,11 +36,14 @@ public class RestaurantController {
     @GetMapping("/restaurants/{id}")
     public Restuarant detail(@PathVariable("id") Long id){
 
-        Restuarant restuarant = restuarantRespository.findById(id);
+        //하나의 가게정보를 바로 얻게? : 기본정보+메뉴정보
+        Restuarant restuarant = restuarantService.getRestuarant(id);
 
-        
-        List<MenuItem> menuItems = menuItemRepository.findAllByRestaurantId(id);
-        restuarant.setMenuItems(menuItems);
+//        Restuarant restuarant = restuarantRespository.findById(id);
+//
+//
+//        List<MenuItem> menuItems = menuItemRepository.findAllByRestaurantId(id);
+//        restuarant.setMenuItems(menuItems);
 
         return restuarant;
     }
