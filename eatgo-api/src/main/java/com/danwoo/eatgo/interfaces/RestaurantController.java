@@ -6,10 +6,11 @@ import com.danwoo.eatgo.domain.MenuItemRepository;
 import com.danwoo.eatgo.domain.Restuarant;
 import com.danwoo.eatgo.domain.RestuarantRespository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -43,4 +44,16 @@ public class RestaurantController {
         return restuarant;
     }
 
+    @PostMapping("/restaurants")
+    public ResponseEntity<?> create(@RequestBody Restuarant resource) throws URISyntaxException {
+
+        String name = resource.getName();
+        String address = resource.getAddress();
+
+        Restuarant restuarant = new Restuarant(1234L, name, address);
+        restuarantService.addRestuarant(restuarant);
+        
+        URI location = new URI("/restaurants/"+restuarant.getId());
+        return ResponseEntity.created(location).body("{}");
+    }
 }

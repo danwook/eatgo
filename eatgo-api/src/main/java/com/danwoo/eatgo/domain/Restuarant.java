@@ -6,9 +6,10 @@ import java.util.List;
 //테스트 코드 생성
 public class Restuarant {
 
-    private final String name;
-    private final String address;
-    private final Long id;
+
+    private String name;
+    private String address;
+    private Long id;
     private List<MenuItem> menuItems = new ArrayList<MenuItem>();
 
     public Restuarant(Long id, String name, String address) {
@@ -16,7 +17,10 @@ public class Restuarant {
         this.address = address;
         this.id = id;
     }
+    public Restuarant() {
 
+
+    }
     public String getAddress() {
         return address;
     }
