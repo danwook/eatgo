@@ -21,6 +21,12 @@ public class Restuarant {
 
 
     }
+
+    public Restuarant(String name , String address) {
+        this.name = name;
+        this.address = address;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -51,4 +57,7 @@ public class Restuarant {
         }
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 }

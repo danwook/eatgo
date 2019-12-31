@@ -27,4 +27,10 @@ public class RestuarantRespositoryImpl implements RestuarantRespository {
               .findFirst()
                 .orElse(null);
     }
+
+    @Override
+    public Restuarant save(Restuarant restuarant) {
+        restuarants.add(restuarant);
+        return restuarant;
+    }
 }

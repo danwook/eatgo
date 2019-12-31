@@ -38,7 +38,8 @@ public class RestuarantService {
         return  restuarants;
     }
 
-    public void addRestuarant(Restuarant restuarant) {
-        //
+    public Restuarant addRestuarant(Restuarant restuarant) {
+        //restuarant.setId(1234L);
+        return restuarantRespository.save(restuarant);
     }
 }
