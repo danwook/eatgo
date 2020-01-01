@@ -30,6 +30,7 @@ public class RestuarantRespositoryImpl implements RestuarantRespository {
 
     @Override
     public Restuarant save(Restuarant restuarant) {
+        restuarant.setId(1234);
         restuarants.add(restuarant);
         return restuarant;
     }

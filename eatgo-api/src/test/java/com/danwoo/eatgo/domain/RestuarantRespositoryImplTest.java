@@ -10,11 +10,12 @@ public class RestuarantRespositoryImplTest {
     @Test
     public void save(){
         RestuarantRespository repository = new RestuarantRespositoryImpl();
-        Restuarant restuarant = new Restuarant("BeRyong","Seoul");
-
         int oldCount = repository.findAll().size();
 
+        Restuarant restuarant = new Restuarant("BeRyong","Seoul");
         repository.save(restuarant);
+
+        assertThat(restuarant.getId(),is(1234L));
 
         int newCount = repository.findAll().size();
 
