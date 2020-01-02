@@ -1,10 +1,14 @@
 package com.danwoo.eatgo.domain;
 
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 
-public interface RestuarantRespository {
+import java.util.List;
+import java.util.Optional;
+
+public interface RestuarantRespository extends CrudRepository<Restuarant, Long> {
     List<Restuarant> findAll();
-    Restuarant findById(Long id);
+
+    Optional<Restuarant> findById(Long id);
 
     Restuarant save(Restuarant restuarant);
 }

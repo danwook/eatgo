@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -46,7 +47,7 @@ public class RestuarantServiceTest {
         restuarants.add(restuarant);
         given(restuarantRespository.findAll()).willReturn(restuarants);
 
-        given(restuarantRespository.findById(1004L)).willReturn(restuarant);
+        given(restuarantRespository.findById(1004L)).willReturn(Optional.of(restuarant));
 
     }
 

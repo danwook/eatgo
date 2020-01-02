@@ -25,7 +25,7 @@ public class RestuarantService {
 
     public Restuarant getRestuarant(Long id){
 
-        Restuarant restuarant = restuarantRespository.findById(id);
+        Restuarant restuarant = restuarantRespository.findById(id).orElse(null);
 
         List<MenuItem> menuItems = menuItemRepository.findAllByRestaurantId(id);
         restuarant.setMenuItems(menuItems);

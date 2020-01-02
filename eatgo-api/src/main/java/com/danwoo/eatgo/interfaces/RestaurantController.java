@@ -13,6 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class RestaurantController {
 
@@ -50,7 +51,7 @@ public class RestaurantController {
         String name = resource.getName();
         String address = resource.getAddress();
 
-        Restuarant restuarant = new Restuarant(1234L, name, address);
+        Restuarant restuarant = new Restuarant(name, address);
         restuarantService.addRestuarant(restuarant);
         
         URI location = new URI("/restaurants/"+restuarant.getId());
